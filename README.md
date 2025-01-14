@@ -1,4 +1,4 @@
-# f2b_cf: interfacing fail2ban with cloudflare's IP lists
+# f2b_cf: manage cloudflare's custom IP Lists using fail2ban and python
 `f2b_cf` is Python cli script that allows
 [fail2ban](https://github.com/fail2ban/fail2ban) to interact with cloudflare's
 IP lists in the same way that fail2ban interacts with iptables. The script is built on top of Cloudflare's [Python API library](https://github.com/cloudflare/cloudflare-python).
