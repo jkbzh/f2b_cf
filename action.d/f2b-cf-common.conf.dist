@@ -1,0 +1,75 @@
+#
+# fail2ban common configuration for actions related
+# to cloudflare IP Lists.
+#
+# Author: J. Kahan (W3C)
+
+[Definition]
+
+# if fail2ban is stopped, restarted, or started we always clear the
+# corresponding cf IP List
+actionstart = <f2b_cf> --clear
+
+actionstop = <f2b_cf> --clear
+
+actionflush = <f2b_cf> --clear
+
+actioncheck = 
+
+actionban = <f2b_cf> --ban <ip>
+
+actionunban = <f2b_cf> --unban <ip>
+
+[Init]
+
+# You can either use the f2b_cf helper script and do all the scripts
+# configuration in that script or you can hard-code the path to the
+# f2b_cf.py script and its configuration file.
+#
+# You only need to configure one of this.
+
+### IF YOU USE THE f2b_cf SCRIPT
+
+# if you're using the f2b_cf helper script, uncomment the following
+# line, optionally prefixing f2b_cf with its full path if it's not in
+# the PATH available to fail2ban. Jump down below to extra_flags
+# and you're done
+##f2b_cf_script = f2b_cf
+#f2b_cf_script = f2b_cf
+
+### END OF f2b_cf SCRIPT OPTIONS
+
+### IF YOU PREFER USING A HARD-CODED PATH TO f2b_cf.py AND ITS
+### CONFIGURATION FILE
+
+# if you're not using the f2b_cf helper script, you'll need
+# to configure the following three variables and uncomment the
+# f2b_cf_script variable definition below them.
+
+# Path to the f2b_cf script configuration file (.env in the same
+# path as f2b_cf script by default)
+
+##f2b_cf_config = /etc/f2b_cf.conf
+#f2b_cf_config = /etc/f2b_cf.conf
+
+# Path to the the f2b_cf.py script
+##f2b_cf_script = /usr/local/sbin/f2b_cf.py
+#f2b_cf_script = 
+
+# Path to the venv python binary
+##f2b_cf_venv = /usr/local/lib/python_virtualenvs/f2b_cf/bin/python
+#f2b_cf_venv = /usr/local/lib/python_virtualenvs/f2b_cf/bin/python
+
+# merging of three variables above, which is what we'll call in the
+# specific actions
+#f2b_cf_script = <f2b_cf_venv> <f2b_cf_script> -f <f2b_cf_config>
+
+## END OF f2b_cg.py CONFIGURATION OPTIONS.
+
+# extra_flags define options you want to be common for all actions that
+# include this file. Proposed use is to keep it empty and initialize it on
+# each script that includes this file, where needed.
+# (default: None, defined in the f2bcf actions that import f2bcf-common
+extra_flags =
+
+f2b_cf= <f2b_cf_script> <extra_flags>

@@ -1,0 +1,16 @@
+#!/bin/env bash
+
+# shortcut script to simplify invocation of f2b_cf
+
+# initializae the following three variables to match your setup
+# path to the python virtual environment python interpreter
+# PYTHON_VIRTUAL_ENV=/usr/local/lib/python_virtualenvs/f2b_cf/bin/python
+PYTHON_VIRTUALENV=
+# path to where f2b_cf.py is installed (e.g. /usr/local/sbin/f2b_cf.py)
+# F2B_CF_SCRIPT=/usr/local/sbin/f2b_cf.py
+F2B_CF_SCRIPT=
+# path to f2b_cf config file
+# F2B_CF_CONF_FILE=/etc/f2b_cf.conf
+F2B_CF_CONF_FILE=
+
+exec "${PYTHON_VIRTUALENV}" "${F2B_CF_SCRIPT}" "$@" -f "${F2B_CF_CONF_FILE}"

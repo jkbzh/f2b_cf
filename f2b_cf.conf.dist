@@ -1,0 +1,9 @@
+# CLOUDFLARE ACCOUNT_ID
+CLOUDFLARE_ACCOUNT_ID=""
+# IP list access token
+CLOUDFLARE_API_TOKEN=""
+# ID of IP list used  for temp bans
+CLOUDFLARE_F2B_IP_LIST=""
+# a 2nd list to store longer bans for repeat offenders (needed only if you use
+# the perma-ban action)
+#CLOUDFLARE_F2B_PERMANENT_IP_LIST=""
